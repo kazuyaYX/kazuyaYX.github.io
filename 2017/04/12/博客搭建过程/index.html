@@ -1,0 +1,896 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="hexo," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="前言github为广大开发者提供了代码托管平台，甚至可以托管静态博客。考虑到github在很长的时间内都会运营，所以开发者几乎可以零成本建立一个属于自己的静态博客。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搭建博客过程">
+<meta property="og:url" content="http://yoursite.com/2017/04/12/博客搭建过程/index.html">
+<meta property="og:site_name" content="kazuyaYX's blog">
+<meta property="og:description" content="前言github为广大开发者提供了代码托管平台，甚至可以托管静态博客。考虑到github在很长的时间内都会运营，所以开发者几乎可以零成本建立一个属于自己的静态博客。">
+<meta property="og:image" content="http://yoursite.com/img/3_repo.png">
+<meta property="og:image" content="http://yoursite.com/img/3_ping_a.png">
+<meta property="og:image" content="http://yoursite.com/img/3_http_error.png">
+<meta property="og:image" content="http://yoursite.com/img/3_ping_io.png">
+<meta property="og:image" content="http://yoursite.com/img/3_ping_c.png">
+<meta property="og:updated_time" content="2017-04-12T13:45:37.252Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="搭建博客过程">
+<meta name="twitter:description" content="前言github为广大开发者提供了代码托管平台，甚至可以托管静态博客。考虑到github在很长的时间内都会运营，所以开发者几乎可以零成本建立一个属于自己的静态博客。">
+<meta name="twitter:image" content="http://yoursite.com/img/3_repo.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'kazuyaYX'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/12/博客搭建过程/"/>
+
+
+
+
+
+  <title> 搭建博客过程 | kazuyaYX's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kazuyaYX's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/12/博客搭建过程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kazuyaYX">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kazuyaYX's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                搭建博客过程
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-12T20:51:48+08:00">
+                2017-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>github为广大开发者提供了代码托管平台，甚至可以托管静态博客。考虑到github在很长的时间内都会运营，所以开发者几乎可以零成本建立一个属于自己的静态博客。   <a id="more"></a></p>
+<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><p>静态博客可供选择的也有很多，目前比较热门的有Jekyll，Hexo等。我发现Hexo的使用简单，主题丰富，所以我选择了用Hexo搭建静态博客。<br>Hexo有一下特点：</p>
+<ul>
+<li>超快速度：Node.js 所带来的超快生成速度，让上百个页面在几秒内瞬间完成渲染。</li>
+<li>支持Markdown： Hexo 支持 GitHub Flavored Markdown 的所有功能，甚至可以整合 Octopress 的大多数插件。</li>
+<li>一键部署：只需一条指令即可部署到 GitHub Pages, Heroku 或其他网站。</li>
+<li>丰富的插件：Hexo 拥有强大的插件系统，安装插件可以让 Hexo 支持 Jade, CoffeeScript。</li>
+</ul>
+<h2 id="安装Hexo博客"><a href="#安装Hexo博客" class="headerlink" title="安装Hexo博客"></a>安装Hexo博客</h2><p>本文采用的是windows平台，linux的搭建过程或许会有些不同。</p>
+<ol>
+<li>安装Node.js<br>前往node.js的<a href="https://nodejs.org/en/" target="_blank" rel="external">官网</a>下载并安装node.js</li>
+<li>安装Git<br>前往git的<a href="https://git-scm.com/" target="_blank" rel="external">官网</a>下载并安装git</li>
+<li><p>安装Hexo<br>打开命令行，输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo-cli</div></pre></td></tr></table></figure>
+</li>
+<li><p>初始化框架<br>命令行中输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo init &lt;folderpath&gt;</div><div class="line">cd &lt;folderpath&gt;</div><div class="line">npm install</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>其中，<folderpath>是你希望放置此静态博客的绝对路径，如D:\hexo。初始化完成后的大概目录：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">|—— _config.yml //网站的配置文件，可配置大部分参数</div><div class="line">|—— package.json</div><div class="line">|—— scaffolds   //模版文件夹</div><div class="line">|—— themes      //主题文件夹。Hexo会根据主题来生成静态页面</div><div class="line">|—— source      //资源文件夹</div><div class="line">    |—— _drafts</div><div class="line">    |—— _posts</div></pre></td></tr></table></figure></folderpath></p>
+<ol>
+<li>生成网站<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo generate</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>该命令会将配置等改动生成为具体的静态文件</p>
+<ol>
+<li>运行服务器<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo server -p 8080</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>打开<a href="http://localhost:8080" target="_blank" rel="external">http://localhost:8080</a>即可查看博客  </p>
+<p>到此博客就在本地端搭建好了，当然，我们尚未将其放到github中，也还没有定制主题。</p>
+<h2 id="使用Next主题"><a href="#使用Next主题" class="headerlink" title="使用Next主题"></a>使用Next主题</h2><ol>
+<li>获取Next<br>打开命令行，输入：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/iissnan/hexo-theme-next &lt;folderpath&gt;/themes/next</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>其中，<folderpath>是hexo博客存放的绝对路径</folderpath></p>
+<ol>
+<li><p>使用Next<br>修改hexo根目录下的配置文件_fonfig.yml，配置theme:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># Extensions</div><div class="line">## Plugins: http://hexo.io/plugins/</div><div class="line">## Themes: http://hexo.io/themes/</div><div class="line">theme: next</div></pre></td></tr></table></figure>
+</li>
+<li><p>验证主题<br>命令行输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo generate</div><div class="line">hexo server -p 8080</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>打开<a href="http://localhost:8080" target="_blank" rel="external">http://localhost:8080</a>即可验证是否Next主题  </p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>配置参数时，既要配置hexo的全局参数，也需要配置Next主题的参数。因此，下面将hexo的全局配置文件称作站点配置文件，Next主题下的配置文件称为主题配置文件。</p>
+<ul>
+<li>设置语言<br>编辑<strong>站点配置文件</strong>，将<code>language</code>设置为你所需要的语言。中文配置如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">language: zh-Hans</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>可能会用到的语言如下：<br>语言 | 代码<br>—|—<br>English | en<br>简体中文 | zh-Hans<br>繁体中文 | zh-hk 或 zh-tw<br>日本語 | ja<br>Korean | ko</p>
+<ul>
+<li><p>选择Scheme<br>Scheme 是 NexT 提供的一种特性，借助于 Scheme，NexT 为你提供多种不同的外观。同时，几乎所有的配置都可以 在 Scheme 之间共用。目前 NexT 支持三种 Scheme，他们是：  </p>
+<ul>
+<li>Muse - 默认 Scheme，这是 NexT 最初的版本，黑白主调，大量留白</li>
+<li>Mist - Muse 的紧凑版本，整洁有序的单栏外观</li>
+<li>Pisces - 双栏 Scheme，小家碧玉似的清新<br>Scheme 的切换通过更改<strong>主题配置文件</strong>，搜索 scheme 关键字。 你会看到有三行 scheme 的配置，将你需用启用的 scheme 前面注释 # 去除即可。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#scheme: Muse</div><div class="line">#scheme: Mist</div><div class="line">scheme: Pisces</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>菜单<br>编辑<strong>主题配置文件</strong>，可以调出自己希望的菜单内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">menu:</div><div class="line">  home: /</div><div class="line">  archives: /archives</div><div class="line">  #about: /about</div><div class="line">  #categories: /categories</div><div class="line">  tags: /tags</div><div class="line">  #commonweal: /404.html</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>还需要设置菜单项的图标，对应的字段是<code>menu_icons</code>。此设定格式是<code>item name</code>: <code>con name</code>，其中 <code>item name</code> 与上一步所配置的菜单名字对应，<code>icon name</code> 是 Font Awesome 图标的 名字。而 <code>enable</code> 可用于控制是否显示图标，你可以设置成 <code>false</code> 来去掉图标。</p>
+<ul>
+<li>头像<br>编辑 <strong>主题配置文件</strong>， 修改字段 <code>avatar</code>， 值设置成头像的链接地址。其中，头像的链接地址可以是：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>地址</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>完整的互联网 URI</td>
+<td><a href="http://example.com/avatar.png" target="_blank" rel="external">http://example.com/avatar.png</a></td>
+</tr>
+<tr>
+<td>站点内的地址</td>
+<td>将头像放置主题目录下的 source/uploads/ （新建 uploads 目录若不存在）<br>  配置为：avatar: /uploads/avatar.png<br>或者放置在 source/images/ <br>目录下配置为：avatar: /images/avatar.png</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>作者昵称<br>编辑 <strong>站点配置文件</strong>， 设置 <code>author</code> 为你的昵称。</li>
+<li>博客描述<br>编辑 <strong>站点配置文件</strong>， 设置 <code>description</code> 字段为你的站点描述。站点描述可以是你喜欢的一句签名:)</li>
+</ul>
+<h2 id="集成第三方应用"><a href="#集成第三方应用" class="headerlink" title="集成第三方应用"></a>集成第三方应用</h2><ul>
+<li>来必力评论系统<br>登陆<a href="https://livere.com/" target="_blank" rel="external">来必力</a>获取你的 <code>LiveRe UID</code>。 编辑 <strong>主题配置文件</strong>， 编辑 <code>livere_uid</code> 字段，设置如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">livere_uid: #your livere_uid</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这是官网给出的配置方法，我的版本在部署到github后出现了错误，于是我在源代码中注释了版本提供的来必力代码，自己在评论文件中加入了来必力代码。<br>具体如下：   </p>
+<pre><code>1. 在`next/layout/_third-party/comments/index.swig`中注释对livere.swig的引用  
+2. 在`next/layout/_partials/comments.swig`的`{% elseif theme.livere_uid %}`后加入来必力的代码
+</code></pre><h2 id="部署至github"><a href="#部署至github" class="headerlink" title="部署至github"></a>部署至github</h2><ol>
+<li>github注册<br>打开<a href="https://github.com/" target="_blank" rel="external">github</a>注册一个账户</li>
+<li>创建代码库<br>登录后，点击页面右上角的加号，选择New repository。在Repository name中填写yourname.github.io。比如我的github名称是kazuyayx，则这里填写kazuyayx.github.io</li>
+<li>配置部署<br>修改站点配置文件：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: https://github.com/yourname/yourname.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>其中repo项是github上建好的仓库地址，可以通过下图所示的方式获得：<br><img src="/img/3_repo.png" alt="img"></p>
+<ol>
+<li>更新部署<br>我们在本地更新配置或者文章后，只需要通过以下命令就可以同步到github上了：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo generate</div><div class="line">hexo deploy</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><p>虽然github提供的域名已经足够简单记忆了，但是毕竟还是github的二级域名，仍旧显得不够高大上。所以，我们可以注册一个域名，并让那个域名直接映射到github上的博客地址。<br>在上篇博文中，我已经提到我购买了本博客的域名<a href="kazuyayx.com">kazuyayx.com</a>。接下来就介绍一下如何绑定域名至github的博客上。<br>由于域名是从godaddy上购买的，而godaddy的域名解析服务器时常会被墙，所以采用国内腾讯云的域名解析服务dnspod。</p>
+<ol>
+<li>在source文件夹中新建一个CNAME文件(无后缀名)，然后用文本编辑器打开，在首行添加你的网站域名，如<a href="http://xxxx.com，注意前面没有http://，也没有www，然后使用hexo" target="_blank" rel="external">http://xxxx.com，注意前面没有http://，也没有www，然后使用hexo</a> g &amp;&amp; hexo d上传部署。</li>
+<li><p>在dns配置中添加两条记录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@       CNAME       username.github.io</div><div class="line">www     CNAME       username.github.io</div></pre></td></tr></table></figure>
+</li>
+<li><p>在godaddy上设置使用其他域名解析服务器，dnspod的dns服务器为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">f1g1ns1.dnspod.net</div><div class="line">f1g1ns2.dnspod.net</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>注意</strong>：<br>本处使用的是两个CNAME的方式，很多人都推荐使用A记录的方式。我一开始也是使用A记录的方式，但是发现效果并不好，因为A记录会直接指向github的ip地址，然而国内访问那个ip经常会丢包。下面是我配置为A记录时ping本域名的结果图：<br><img src="/img/3_ping_a.png" alt="img"><br>可能是由于丢包，访问博客时常会出现这种错误：<br><img src="/img/3_http_error.png" alt="img"><br>下图是我直接ping github博客时的结果图：<br><img src="/img/3_ping_io.png" alt="img"><br>可以看出github博客本身的访问是十分通畅的，于是我考虑将A记录换成C记录，结果如下：<br><img src="/img/3_ping_c.png" alt="img"><br>这样的访问效果果然好了不少。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>其实，搭建一个博客并不是太难，毕竟现在成熟的框架已经太多太多，完全不需要自己再造轮子。当然，如果对前端感兴趣的人或许可以自己动手改改前端样式，做一个属于自己的主题。总而言之，我今后一定要克服对新技术的恐惧。很多事情并不是很难，只是我们尚未接触罢了！</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/hexo/" rel="tag"># hexo</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/05/购买域名了/" rel="next" title="购买域名了">
+                <i class="fa fa-chevron-left"></i> 购买域名了
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yODAzNS80NjA5">
+        <script type="text/javascript">
+         (function(d, s) {
+             var j, e = d.getElementsByTagName(s)[0];
+
+             if (typeof LivereTower === 'function') { return; }
+
+             j = d.createElement(s);
+             j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+             j.async = true;
+
+             e.parentNode.insertBefore(j, e);
+         })(document, 'script');
+        </script>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="kazuyaYX" />
+          <p class="site-author-name" itemprop="name">kazuyaYX</p>
+           
+              <p class="site-description motion-element" itemprop="description">kazuyaYX的琐事回收站</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/kazuyaYX" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/kazuyaYX" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tinylcy.me" title="tinylcy" target="_blank">tinylcy</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo"><span class="nav-number">2.</span> <span class="nav-text">Hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Hexo博客"><span class="nav-number">3.</span> <span class="nav-text">安装Hexo博客</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Next主题"><span class="nav-number">4.</span> <span class="nav-text">使用Next主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">5.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集成第三方应用"><span class="nav-number">6.</span> <span class="nav-text">集成第三方应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署至github"><span class="nav-number">7.</span> <span class="nav-text">部署至github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绑定域名"><span class="nav-number">8.</span> <span class="nav-text">绑定域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">9.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">kazuyaYX</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+<!-- 背景动画 -->
+<script type="text/javascript" src="/js/src/particle.js"></script>
+</html>
